@@ -1,0 +1,626 @@
+#root {
+  
+}
+
+.header-container {
+  position: fixed; /* Keeps it fixed at the top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px; /* Set a fixed height */
+  display: flex;
+  justify-content: space-between; /* ✅ Ensures spacing between elements */
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #ffffff; /* Adjust based on your design */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  z-index: 1000; /* Ensures it stays above other content */
+}
+
+/* ✅ Prevents Landing Screen from being hidden */
+.page-content {
+  padding-top: 60px; /* Ensures content starts below the fixed header */
+}
+
+.page-content h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1E3A8A; /* Blue color for heading */
+}
+
+/* Grid container for AddResume */
+.resume-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .resume-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .resume-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.plus-square-container {
+  padding: 3.5rem;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secondary-color, #E5E7EB);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plus-square-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.resume-section {
+  padding: 2.5rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+@media (min-width: 768px) {
+  .resume-section {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .resume-section {
+    padding-left: 12rem;
+    padding-right: 12rem;
+  }
+}
+
+/* Dialog overlay styling for shading effect */
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog-content {
+  background: #ebeced; /* Light gray for contrast */
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  max-width: 400px; /* Increased width for elongation */
+  width: 90%; /* Ensures responsiveness */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+
+
+/* Style for individual elements inside the container */
+
+.form-resume-container {
+  display: grid;
+  grid-template-columns: 1fr; /* Default: Single column */
+  gap: 2.5rem; /* 10 spacing */
+  padding: 2.5rem; /* 10 padding */
+}
+
+/* Medium screens (md) and above: Two columns */
+@media (min-width: 768px) {
+  .form-resume-container {
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+  }
+}
+
+
+.center-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh; /* ✅ Makes sure it's centered vertically */
+  width: 100%; /* ✅ Ensures full width */
+}
+
+.center-container h1 {
+  font-size: 3.75rem; /* ✅ Equivalent to text-6xl */
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif; /* ✅ Ensure correct font */
+}
+
+.center-container button {
+  margin-top: 1.5rem; /* ✅ Equivalent to mt-6 */
+  padding: 0.75rem 1.5rem; /* ✅ Equivalent to px-6 py-3 */
+  font-size: 1.125rem; /* ✅ Equivalent to text-lg */
+  font-weight: 600;
+  background-color: white;
+  color: #2563eb; /* ✅ Equivalent to text-blue-600 */
+  border-radius: 0.5rem; /* ✅ Equivalent to rounded-lg */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.center-container button:hover {
+  background-color: #e5e7eb; /* ✅ Equivalent to hover:bg-gray-200 */
+}
+
+
+.resume-preview-container {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  height: 100%;
+  padding: 3.5rem;
+  border-top-width: 20px;
+  border-top-style: solid; /* Border will be dynamic */
+}
+
+/* Default border color if JavaScript doesn't apply it */
+.resume-preview-container.default-border {
+  border-top-color: black;
+}
+
+/* Personal Detail Preview Container */
+.personal-detail-preview {
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Name Styling */
+.personal-detail-preview h2.name {
+  font-weight: bold;
+  font-size: 1.25rem; /* text-xl */
+  color: var(--theme-color, black); /* Default color */
+}
+
+/* Job Title Styling */
+.personal-detail-preview h2.job-title {
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 500; /* font-medium */
+  color: #555;
+}
+
+/* Address Styling */
+.personal-detail-preview h2.address {
+  font-size: 0.75rem; /* text-xs */
+  font-weight: normal;
+  color: var(--theme-color, black);
+}
+
+/* Contact Info Styling */
+.personal-detail-preview /* Contact Info Section */
+.contact-info {
+    display: flex;
+    justify-content: space-between; /* Ensures max spacing */
+    gap: 2rem; /* Adds space between phone & email */
+    margin-top: 0.5rem;
+    font-size: 0.875rem; /* Ensures uniform text size */
+    font-weight: normal;
+    color: var(--theme-color, black);
+}
+
+.professional-experience-container {
+  margin-top: 1.5rem; /* Equivalent to 'my-6' */
+  margin-bottom: 1.5rem;
+  text-align: center; /* Centers the heading */
+}
+
+.professional-experience-heading {
+  font-weight: bold;
+  font-size: 0.875rem; /* Equivalent to 'text-sm' */
+  margin-bottom: 0.5rem; /* Equivalent to 'mb-2' */
+}
+
+/* Dynamic theme color */
+.professional-experience-heading.theme-color {
+  color: var(--resume-theme-color, black); /* Fallback to black */
+}
+
+
+.professional-experience-container {
+  text-align: left;
+}
+
+.education-heading {
+  font-weight: bold;
+  font-size: 0.875rem; /* Equivalent to 'text-sm' */
+  margin-bottom: 0.5rem; /* Equivalent to 'mb-2' */
+}
+
+
+
+.experience-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 15px;
+}
+
+.experience-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.experience-company {
+  font-size: 14px;
+  color: #555;
+}
+
+.experience-dates {
+  font-size: 14px;
+  color: #777;
+}
+
+.experience-workSummary {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+.education-container {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.education-item {
+  margin-bottom: 20px;
+}
+
+.education-degree {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.education-university {
+  font-size: 14px;
+  color: #555;
+}
+
+.education-dates {
+  font-size: 14px;
+  color: #777;
+}
+
+.education-description {
+  font-size: 14px;
+  color: #666;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+.skills-heading {
+  font-weight: bold;
+  font-size: 0.875rem; /* Equivalent to 'text-sm' */
+  margin-bottom: 0.5rem; /* Equivalent to 'mb-2' */
+}
+
+
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2-column layout */
+  gap: 10px;
+}
+
+.skill-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  border-radius: 5px;
+  background-color: #f3f4f6;
+}
+
+
+hr {
+  border-top: 1.5px solid #ccc;
+  margin: 12px 0;
+}
+
+
+.personal-detail-container {
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* ✅ Soft shadow */
+  border-radius: 12px; /* ✅ Smooth rounded edges */
+  border-top: 4px solid var(--primary-color, #3b82f6); /* ✅ Top border with primary color */
+  margin-top: 20px;
+  background-color: #fff; /* ✅ White background */
+}
+
+.personal-detail-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1f2937; /* ✅ Dark gray text */
+}
+
+.personal-detail-description {
+  font-size: 14px;
+  color: #6b7280; /* ✅ Lighter gray text */
+}
+
+
+/* ✅ Form section container */
+.form-section-container {
+  padding: 20px;
+  background-color: #ffffff; /* White background */
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* ✅ Header section: Flexbox for alignment */
+.form-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* ✅ Theme button */
+.theme-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1.5px solid #3b82f6; /* Blue outline */
+  color: #3b82f6;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-button:hover {
+  background: #3b82f6;
+  color: white;
+}
+
+/* ✅ Navigation buttons container */
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* ✅ Space between buttons */
+}
+
+/* ✅ Back & Next buttons */
+.back-button,
+.next-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-button {
+  background: #e5e7eb; /* Light gray */
+  color: #333;
+}
+
+.back-button:hover {
+  background: #d1d5db; /* Darker gray */
+}
+
+.next-button {
+  background: #3b82f6;
+  color: white;
+}
+
+.next-button:hover {
+  background: #2563eb; /* Darker blue */
+}
+
+
+/* ✅ Personal Detail Container */
+.personal-detail-container {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #3b82f6;
+}
+
+/* ✅ Title & Description */
+.personal-detail-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+.personal-detail-description {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* ✅ Form Grid Layout */
+.personal-detail-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+/* ✅ Label Styling */
+.personal-detail-container label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ✅ Input Field */
+.personal-detail-container input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #111827;
+  background-color: #f9fafb;
+  transition: border-color 0.2s ease-in-out;
+}
+
+/* ✅ Hover & Focus Effects */
+.personal-detail-container input:hover,
+.personal-detail-container input:focus {
+  border-color: #3b82f6;
+  outline: none;
+}
+
+.save-button-container {
+  margin-top: 0.75rem; /* mt-3 in Tailwind (12px) */
+  display: flex;
+  justify-content: flex-end; /* Aligns the button to the right */
+}
+
+/* Styles for the container */
+.summary-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Style for the label */
+.summary-container label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Style for the button */
+.summary-container .border-primary {
+  border: 2px solid #007bff;
+  color: #007bff;
+  background-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+.summary-container .border-primary:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.summary-container .textarea {
+  width: 100%;
+  min-height: 120px;
+  resize: none;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #fff;
+}
+
+
+.text-center {
+  text-align: center;
+}
+
+.text-2xl {
+  font-size: 1.5rem; /* Adjust as needed */
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.congrats-heading {
+  margin-top: 20px;
+  color: #4CAF50; /* Green color for success */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-grey-400 {
+  color: #9CA3AF; /* Tailwind's gray-400 equivalent */
+}
+
+.download-message {
+  font-size: 1rem; /* Adjust as needed */
+  margin-top: 10px;
+}
+
+
+
+.sign-in-container {
+  position: fixed; /* Ensures it stays fixed in place */
+  top: 50%; /* Moves it down */
+  left: 50%; /* Moves it right */
+  transform: translate(-50%, -50%); /* Centers it exactly */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
